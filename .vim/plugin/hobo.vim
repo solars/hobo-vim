@@ -5,7 +5,7 @@ endif
 function! s:Instantiate()
   call inputsave()
   let $HOBO_TAG_NAME = input("Tagname: ")
-  let $HOBO_FILEPATH = expand('%:p')
+  let $HOBO_ROOT = b:rails_root
   call inputrestore()
   return system("ruby $HOME/bin/instantiate_tag.rb")
 endfunction
@@ -20,7 +20,7 @@ function! s:Complete(findstart, base)
     return start
   else
     let $HOBO_TAG_NAME=a:base
-    let $HOBO_FILEPATH = expand('%:p')
+    let $HOBO_ROOT = b:rails_root
     let output = system("ruby $HOME/bin/autocomplete_tag.rb")
     return split(output)
   end

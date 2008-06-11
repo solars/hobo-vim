@@ -1,13 +1,11 @@
 # Original code pastie by Christoph Blank http://pastie.org/203129
-require File.dirname(__FILE__) + '/rails_helper'
-
 module Hobo; end
 module Hobo::Dryml
   extend self
 
-  def find_taglibs(current_file)
+  def find_taglibs(rails_root)
     files = []
-    if rails_root = RailsHelper.rails_root(current_file)
+    if rails_root
       files = Dir["#{rails_root}/app/views/#{taglibs_dir_pattern}"] # user taglibs
       if Dir["#{rails_root}/vendor/{plugins/hobo,gems/hobo,gems/hobo-*}/"].empty? # proj without gem/plugin
         files.concat system_gem_taglibs

@@ -19,8 +19,8 @@ module Hobo::Dryml
 
   # Extracts the original definition of a tag from its source file
   # Initially, only extracts from taglibs within HOBO_ROOT
-  def extract_tag(tag_name, current_file)
-    all_dryml_files = find_taglibs(current_file)
+  def extract_tag(tag_name, rails_root)
+    all_dryml_files = find_taglibs(rails_root)
     for file in all_dryml_files
       contents = File.read(file).split("\n")
       start_index, end_index, def_count = nil, contents.length - 1, 0
@@ -41,8 +41,8 @@ module Hobo::Dryml
     ""
   end
 
-  def instantiate_tag(tag_name, current_file)
-    tag_src = extract_tag(tag_name, current_file)
+  def instantiate_tag(tag_name, rails_root)
+    tag_src = extract_tag(tag_name, rails_root)
     return "" if !tag_src || tag_src.strip == ""
     attrs_snippets = attrs_snippets_from tag_src, tag_name
     param_list = param_list_from tag_src, tag_name
@@ -59,9 +59,9 @@ module Hobo::Dryml
     end
   end
 
-  def autocomplete_tag(tag_name_partial, current_file)
+  def autocomplete_tag(tag_name_partial, rails_root)
     return [] if tag_name_partial.strip.length == 0
-    all_dryml_files = find_taglibs(current_file)
+    all_dryml_files = find_taglibs(rails_root)
     all_dryml_files.inject([]) do |list, file|
       contents = File.read(file).split("\n")
       contents.each_with_index do |line, index|

@@ -1,5 +1,7 @@
 = hobo.vim http://github.com/solars/hobo-vim/
 
+Depends on rails.vim, http://www.vim.org/scripts/script.php?script_id=1567
+
 == Description
 
 This vim plugin uses the scripts of drnic's hobo-tmbundle, instantiate_tags and autocomplete_tags
