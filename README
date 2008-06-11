@@ -1,0 +1,38 @@
+= hobo.vim http://github.com/solars/hobo-vim/
+
+== Description
+
+This vim plugin uses the scripts of drnic's hobo-tmbundle, instantiate_tags and autocomplete_tags
+
+It enables you to:
+  
+  - autocomplete hobo tags (including your custom ones) based on a partial prefix
+  - instantiate hobo tags (eg. fetch all available params inside a tag definition)
+
+and sets highlighting/indentation (xml or eruby) for dryml files, which is quite limited at the moment.
+
+== Suggested installation
+
+The file structure should be clear, just copy it into your $HOME dir, resulting in:
+
+~/bin/instantiate_tag.rb
+~/bin/autocomplete_tag.rb
+~/lib/drnic/{hobo-tmbundle-files}
+~/.vim/plugin/hobo.vim
+
+== Usage
+
+  - Autocompletion: uses normal vim omni completion (ctrl-x ctrl-o)
+  - Tag Instantiation: press F5 in insert mode, enter tagname
+
+To remap the keybinding for Instatiation in ~/.vimrc use:
+
+  - map <F6> <Plug>HoboInstantiate
+
+== Notes
+
+The files in lib/drnic/ are from hobo-tmbundle written by drnic, available at:
+http://github.com/drnic/hobo-tmbundle
+
+This is quick an dirty, feel free to send suggestions/corrections
+sol@textmode.at
