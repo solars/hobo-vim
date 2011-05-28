@@ -46,6 +46,6 @@ let s:sid = substitute(s:sid, 'xx', '', '')
 "autocmd BufNewFile,BufRead *.dryml syn match htmlTagName contained "\<\([a-zA-Z0-9-]\+\)\>"
 
 " OR xml highlighting (+ indentation)
-autocmd BufNewFile,BufRead *.dryml setlocal filetype=xml
+au! BufRead,BufNewFile *.dryml  let b:eruby_subtype='xml'|set filetype=eruby
 
 exec "autocmd BufNewFile,BufRead *.dryml set omnifunc=" . s:sid . "Complete"
